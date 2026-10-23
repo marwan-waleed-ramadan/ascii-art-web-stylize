@@ -1,0 +1,147 @@
+/* General settings */
+:root {
+  --color-page: #eef2f6;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f5f7fa;
+  --color-text: #172033;
+  --color-text-muted: #4b596c;
+  --color-border: #ccd4df;
+  --color-border-strong: #65758b;
+  --color-primary: #164e91;
+  --color-primary-hover: #10396b;
+  --color-focus: #d58000;
+  --color-error-border: #a32626;
+  --color-error-background: #fff0f0;
+  --color-error-text: #8b1616;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Page background and text */
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: Arial, sans-serif;
+  background: var(--color-page);
+  color: var(--color-text);
+}
+
+/* Main container */
+.card {
+  max-width: 980px;
+  margin: auto;
+  padding: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+/* Heading */
+h1 {
+  margin-top: 0;
+  color: var(--color-primary);
+}
+
+/* Form layout */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+/* Text input */
+textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 10px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 6px;
+  font: inherit;
+  resize: vertical;
+}
+
+/* Banner choices */
+fieldset {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 6px;
+}
+
+/* Labels */
+label {
+  display: inline-block;
+  margin: 4px 12px 4px 0;
+}
+
+/* Generate button */
+.btn {
+  padding: 12px 20px;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  border: none;
+  border-radius: 6px;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Button hover */
+.btn:hover {
+  background: var(--color-primary-hover);
+}
+
+/* Keyboard focus */
+textarea:focus,
+input:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* Character counter and hints */
+.hint {
+  color: var(--color-text-muted);
+}
+
+/* Error messages */
+.error {
+  padding: 12px;
+  border: 1px solid var(--color-error-border);
+  background: var(--color-error-background);
+  color: var(--color-error-text);
+  border-radius: 6px;
+}
+
+/* ASCII art result */
+pre {
+  max-width: 100%;
+  overflow: auto;
+  padding: 16px;
+  background: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: monospace;
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  fieldset label {
+    display: block;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+}
