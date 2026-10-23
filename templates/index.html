@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ASCII Art Web</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="card">
+    <h1>ASCII Art Web</h1>
+    <p class="hint">Type text, choose a banner, then generate ASCII art.</p>
+
+    <form method="POST" action="/ascii-art">
+      <div class="row">
+        <fieldset>
+          <legend>Banner</legend>
+          <label>
+            <input type="radio" name="banner" value="standard" {{if or (eq .Banner "") (eq .Banner "standard")}}checked{{end}}>
+            standard
+          </label>
+          <label>
+            <input type="radio" name="banner" value="shadow" {{if eq .Banner "shadow"}}checked{{end}}>
+            shadow
+          </label>
+          <label>
+            <input type="radio" name="banner" value="thinkertoy" {{if eq .Banner "thinkertoy"}}checked{{end}}>
+            thinkertoy
+          </label>
+        </fieldset>
+      </div>
+
+      <label for="text">Your text</label>
+      <div class="row">
+        <textarea name="text" id="text" maxlength="200" required placeholder="Write something...">{{.Text}}</textarea>
+        <span id="count" class="hint"></span>
+      </div>
+
+      <div class="row">
+        <button class="btn" type="submit">Generate</button>
+      </div>
+    </form>
+
+    {{if .Error}}
+      <div class="error" role="alert">{{.Error}}</div>
+    {{end}}
+
+    {{if .Result}}
+      <h2>Result</h2>
+      <pre>{{.Result}}</pre>
+    {{end}}
+  </div>
+<script>
+    const text = document.getElementById('text');
+    const count = document.getElementById('count');
+    function updateCount() {
+      count.textContent = text.value.length + ' / 200 characters';
+    }
+    text.addEventListener('input', updateCount);
+    updateCount();
+  </script>
+</body>
+</html>
